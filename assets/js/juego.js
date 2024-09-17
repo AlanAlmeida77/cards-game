@@ -3,6 +3,7 @@ let deck = [];
 const tipos = ["C", "D", "H", "S"];
 const especiales = ["A", "J", "Q", "K"];
 
+// Crear nueva baraja
 const crearDeck = () => {
   for (let i = 2; i <= 10; i++) {
     for (let tipo of tipos) {
@@ -16,9 +17,30 @@ const crearDeck = () => {
     }
   }
 
-  console.log(deck);
+  //console.log(deck);
   deck = _.shuffle(deck);
   console.log(deck);
+  return deck;
 };
 
 crearDeck();
+
+//Esta función permite tomar una nueva carta hasta que no quede ninguna en el mazo
+
+const pedirCarta = () => {
+  //let carta = _.sample(deck);
+  //deck = _.without(deck, carta);
+
+  //console.log("esta es tu carta aleatoria: " + carta);
+  //console.log("Mazo restante: ", deck);
+
+  if (deck.length === 0) {
+    throw "No hay cartas en el deck";
+  }
+
+  const carta = deck.pop();
+  console.log(deck);
+  console.log(carta);
+  return carta;
+};
+pedirCarta();
