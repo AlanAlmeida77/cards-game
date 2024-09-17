@@ -3,6 +3,13 @@ let deck = [];
 const tipos = ["C", "D", "H", "S"];
 const especiales = ["A", "J", "Q", "K"];
 
+let puntosJugador = 0,
+  puntosComputaodra = 0;
+
+//Referencias DOM
+const btnPedir = document.querySelector("#btnPedir");
+const puntosAcumulados = document.querySelectorAll("small");
+
 // Crear nueva baraja
 const crearDeck = () => {
   for (let i = 2; i <= 10; i++) {
@@ -19,7 +26,6 @@ const crearDeck = () => {
 
   //console.log(deck);
   deck = _.shuffle(deck);
-  console.log(deck);
   return deck;
 };
 
@@ -39,8 +45,6 @@ const pedirCarta = () => {
   }
 
   const carta = deck.pop();
-  console.log(deck);
-  console.log(carta);
   return carta;
 };
 
@@ -50,4 +54,12 @@ const valorCarta = (carta) => {
 };
 
 const valor = valorCarta(pedirCarta());
-console.log({ valor });
+
+// Eventos
+btnPedir.addEventListener("click", () => {
+  const carta = pedirCarta();
+
+  puntosJugador = puntosJugador + valorCarta(carta);
+  puntosAcumulados[0].innerText = puntosJugador;
+  console.log(puntosJugador);
+});
