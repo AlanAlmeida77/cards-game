@@ -8,6 +8,9 @@ let puntosJugador = 0,
 
 //Referencias DOM
 const btnPedir = document.querySelector("#btnPedir");
+
+const divCartasJugador = document.querySelector("#jugador-cartas");
+
 const puntosAcumulados = document.querySelectorAll("small");
 
 // Crear nueva baraja
@@ -24,7 +27,7 @@ const crearDeck = () => {
     }
   }
 
-  //console.log(deck);
+  console.log(deck);
   deck = _.shuffle(deck);
   return deck;
 };
@@ -48,6 +51,7 @@ const pedirCarta = () => {
   return carta;
 };
 
+//Asignamos el valor correspondiente a cada carta en el mazo
 const valorCarta = (carta) => {
   const valor = carta.substring(0, carta.length - 1);
   return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
@@ -62,4 +66,18 @@ btnPedir.addEventListener("click", () => {
   puntosJugador = puntosJugador + valorCarta(carta);
   puntosAcumulados[0].innerText = puntosJugador;
   console.log(puntosJugador);
+
+  //imagen carta
+  const imgCarta = document.createElement("img");
+  imgCarta.src = `assets/cartas/${carta}.png`;
+  imgCarta.classList.add("carta");
+  divCartasJugador.append(imgCarta);
+
+  if (puntosJugador > 21) {
+    console.warn("game over");
+    btnPedir.disabled = true;
+  } else if (puntosJugador === 21) {
+    console.warn("you win");
+    btnPedir.disabled = true;
+  }
 });
