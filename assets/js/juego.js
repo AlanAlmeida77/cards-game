@@ -74,10 +74,10 @@ btnPedir.addEventListener("click", () => {
   divCartasJugador.append(imgCarta);
 
   if (puntosJugador > 21) {
-    console.warn("game over");
+    console.warn("perdiste...");
     btnPedir.disabled = true;
   } else if (puntosJugador === 21) {
-    console.warn("you win");
+    console.warn("ganaste!");
     btnPedir.disabled = true;
   }
 });
