@@ -114,12 +114,12 @@
     divCartasJugador.append(imgCarta);
 
     if (puntosJugador > 21) {
-      console.warn("perdiste...");
+      
       btnPedir.disabled = true;
       btnDetener.disabled = true;
       turnoComputadora(puntosJugador);
     } else if (puntosJugador === 21) {
-      console.warn("ganaste!");
+      
       btnPedir.disabled = true;
       btnDetener.disabled = true;
       turnoComputadora(puntosJugador);
