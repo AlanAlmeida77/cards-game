@@ -5,24 +5,30 @@
   let deck = [];
 
   const tipos = ["C", "D", "H", "S"];
-  const especiales = ["A", "J", "Q", "K"];
+  especiales = ["A", "J", "Q", "K"];
 
-  let puntosJugador = 0,
-    puntosComputaodra = 0;
+  let puntosJugadores = [];
 
   //Referencias DOM
-  const btnPedir = document.querySelector("#btnPedir");
-  const btnDetener = document.querySelector("#btnDetener");
-  const btnNuevo = document.querySelector("#btnNuevo");
+  const btnPedir = document.querySelector("#btnPedir"),
+    btnDetener = document.querySelector("#btnDetener"),
+    btnNuevo = document.querySelector("#btnNuevo");
 
-  const divCartasJugador = document.querySelector("#jugador-cartas");
+  const divCartasJugador = document.querySelector("#jugador-cartas"),
+    divCartasComputadora = document.querySelector("#computadora-cartas"),
+    puntosAcumulados = document.querySelectorAll("small");
 
-  const divCartasComputadora = document.querySelector("#computadora-cartas");
-
-  const puntosAcumulados = document.querySelectorAll("small");
+  //Iniciar el juego
+  const inicializarJuego = (numJugadores = 2) => {
+    deck = crearDeck();
+    for (let i = 0; i < numJugadores; i++) {
+      puntosJugadores.push(0);
+    }
+  };
 
   // Crear nueva baraja
   const crearDeck = () => {
+    deck = [];
     for (let i = 2; i <= 10; i++) {
       for (let tipo of tipos) {
         deck.push(i + tipo);
@@ -35,27 +41,17 @@
       }
     }
 
-    deck = _.shuffle(deck);
-    return deck;
+    return _.shuffle(deck);
   };
-
-  crearDeck();
 
   //Esta función permite tomar una nueva carta hasta que no quede ninguna en el mazo
 
   const pedirCarta = () => {
-    //let carta = _.sample(deck);
-    //deck = _.without(deck, carta);
-
-    //console.log("esta es tu carta aleatoria: " + carta);
-    //console.log("Mazo restante: ", deck);
-
     if (deck.length === 0) {
       throw "No hay cartas en el deck";
     }
 
-    const carta = deck.pop();
-    return carta;
+    return deck.pop();
   };
 
   //Asignamos el valor correspondiente a cada carta en el mazo
@@ -64,7 +60,7 @@
     return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
   };
 
-  const valor = valorCarta(pedirCarta());
+  const acumularPuntos = () => {};
 
   //Turno de la computadora
   const turnoComputadora = (puntosMinimos) => {
