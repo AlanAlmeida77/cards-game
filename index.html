@@ -17,32 +17,32 @@
   <body>
     <header class="titulo">Blackjack</header>
 
-    <div class="row mt-2">
-      <div id="divBotones" class="col text-center">
+    <div class="container mt-4">
+      <div id="divBotones" class="text-center mb-4">
         <button id="btnNuevo" class="btn btn-danger">Nuevo Juego</button>
-        <button id="btnPedir" disabled="disabled" class="btn btn-primary">
+        <button id="btnPedir" disabled="disabled" class="btn btn-primary ml-2">
           Pedir carta
         </button>
-        <button id="btnDetener" disabled="disabled" class="btn btn-primary">
+        <button id="btnDetener" disabled="disabled" class="btn btn-primary ml-2">
           Detener
         </button>
       </div>
-    </div>
 
-    <div class="row container">
-      <div class="col">
-        <h1>Jugador 1 - <small>0</small></h1>
-        <div id="jugador-cartas" class="divCartas">
-          <!-- <img class="carta" src="assets/cartas/2C.png"> -->
+      <div class="row text-center">
+        <div class="col">
+          <h1>Jugador 1 - <small id="puntosJugador1">0</small></h1>
+          <div id="jugador-cartas" class="divCartas">
+            <!-- Cartas del jugador -->
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row container mt-2">
-      <div class="col">
-        <h1>Computadora - <small>0</small></h1>
-        <div id="computadora-cartas" class="divCartas">
-          <!-- <img class="carta" src="assets/cartas/3C.png"> -->
+      <div class="row text-center mt-4">
+        <div class="col">
+          <h1>Computadora - <small id="puntosComputadora">0</small></h1>
+          <div id="computadora-cartas" class="divCartas">
+            <!-- Cartas de la computadora -->
+          </div>
         </div>
       </div>
     </div>
@@ -51,9 +51,6 @@
     <script src="assets/js/juego-min.js"></script>
 
     <script>
-      // inicializarJuego();
-      console.log(miModulo);
-
       document.querySelector("#btnNuevo").addEventListener("click", () => {
         miModulo.nuevoJuego();
       });
